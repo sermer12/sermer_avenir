@@ -1,10 +1,14 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import "../styles/root.css"
 
 const Routes = () => {
   return (
     <>
-      <header>
+      <header className="hearder_root">
+        <div className="logo_sumer">
+          LOGO
+        </div>
         <nav>
           <NavLink to="/">HomePage</NavLink>
           <NavLink to="/Qui sommes-nous">Qui sommes-nous</NavLink>
