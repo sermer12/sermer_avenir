@@ -11,7 +11,7 @@ const postSchema = mongoose.Schema(
       type: Date,
       required: true,
     },
-    lieu: {
+    place: {
       type: String,
       required: true,
       maxlength: 100,
@@ -26,7 +26,7 @@ const postSchema = mongoose.Schema(
       required: true,
       maxlength: 1500,
     },
-    image: {
+    document_pdf: {
       type: String,
     },
   },
