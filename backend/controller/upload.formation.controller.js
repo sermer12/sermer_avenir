@@ -33,7 +33,7 @@ const imageFilter = function (req, file, cb) {
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "client/public/uploads/posts/picture"); // Remplacez par le chemin de votre dossier d'images
+      cb(null, "frontend/public/uploads/posts/picture"); // Remplacez par le chemin de votre dossier d'images
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = "image_upload_";

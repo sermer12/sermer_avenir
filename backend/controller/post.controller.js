@@ -30,7 +30,7 @@ const pdfFilter = function (req, file, cb) {
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "client/public/uploads/posts/pdf");
+      cb(null, "frontend/public/uploads/posts/pdf");
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = "document_pdf_formation" + "-" + req.body.name;
