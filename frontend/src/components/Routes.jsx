@@ -32,12 +32,7 @@ const Routes = () => {
           >
             Nos actualités
           </NavLink>
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) => (isActive ? "is_active" : "")}
-          >
-            Dashboard
-          </NavLink>
+
           <NavLink
             to="/Contact"
             className={({ isActive }) => (isActive ? "is_active" : "")}

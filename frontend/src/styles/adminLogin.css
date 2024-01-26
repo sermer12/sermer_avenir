@@ -1,0 +1,40 @@
+/* Ajoutez ces styles à votre fichier CSS */
+
+.form_container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+.form_container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.form_container label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form_container input {
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.form_container button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form_container button:hover {
+  background-color: #45a049;
+}
+
+/* Ajoutez d'autres styles au besoin en fonction de votre conception. */

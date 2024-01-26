@@ -7,6 +7,8 @@ import QuiSommesNous from "./pages/QuiSommesNous";
 import HomePages from "./pages/HomePages";
 import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
+import AdminLogin from "./components/AdminLogin";
+import PrivateRoute from "./utils/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -31,11 +33,19 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "Contact",
         element: <Contact />,
+      },
+      {
+        path: "adminLogin",
+        element: <AdminLogin />,
       },
     ],
   },
