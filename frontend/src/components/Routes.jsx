@@ -3,6 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import "../styles/root.css";
 
 const Routes = () => {
+  const token = window.localStorage.getItem("tokenAdmin");
   return (
     <>
       <header className="hearder_root">
@@ -26,6 +27,14 @@ const Routes = () => {
           >
             Nos formations
           </NavLink>
+          {token && (
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) => (isActive ? "is_active" : "")}
+            >
+              dashboard
+            </NavLink>
+          )}
           <NavLink
             to="/Nos actualites"
             className={({ isActive }) => (isActive ? "is_active" : "")}

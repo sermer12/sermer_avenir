@@ -43,12 +43,14 @@ const AdminLogin = () => {
   // Si l'utilisateur est déjà connecté, redirigez-le vers la page de tableau de bord
   const token = window.localStorage.getItem("tokenAdmin");
   if (token) {
-    return navigate("/dashboard");
+    window.location = "/dashboard";
+
+    //si lutilisateur est connect on le redirige veres le dashboard
   }
-  // Si isLoggedIn est true, redirigez également vers la page de tableau de bord
   if (isLoggedIn) {
-    return navigate("/dashboard");
+    window.location = "/dashboard";
   }
+
   return (
     <div className="form_container">
       {error && <p className="error-message">{error}</p>}
