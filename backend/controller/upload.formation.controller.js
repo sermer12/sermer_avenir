@@ -80,25 +80,62 @@ module.exports.setUploadPost = async (req, res) => {
   }
 };
 
+// module.exports.editeUploadPost = async (req, res) => {
+//   try {
+//     const uploadEdiit = await UploadFormation.findById(req.params.id);
+//     if (!uploadEdiit) {
+//       return res.status(400).json({ message: "ce  post n'existe pas" });
+//     }
+//     const updateUpload = await UploadFormation.findByIdAndUpdate(
+//       uploadEdiit, // Utilisez l'ID du document
+//       req.body,
+//       { new: true }
+//     );
+//     res.status(200).json(updateUpload);
+//   } catch (error) {
+//     res.status(500).json({
+//       message: "une erreur s'est produit lors de la mise a jours des posts",
+//       error,
+//     });
+//   }
+// };
 module.exports.editeUploadPost = async (req, res) => {
   try {
     const uploadEdiit = await UploadFormation.findById(req.params.id);
     if (!uploadEdiit) {
-      return res.status(400).json({ message: "ce  post n'existe pas" });
+      return res.status(400).json({ message: "ce post n'existe pas" });
     }
-    const updateUpload = await UploadFormation.findByIdAndUpdate(
-      uploadEdiit, // Utilisez l'ID du document
-      req.body,
-      { new: true }
-    );
+
+    // Vérifiez si un nouveau fichier est téléchargé
+    if (req.file) {
+      // Gérez le téléchargement du nouveau fichier
+      const nouveauCheminfichier = "frontend/public/uploads/posts/picture/" + req.file.filename;
+
+      // Supprimez le fichier image existant s'il existe
+      if (uploadEdiit.picture) {
+        // Utilisez fs.unlink ou votre méthode préférée pour supprimer le fichier
+         fs.unlinkSync(uploadEdiit.picture);
+      }
+
+      // Mettez à jour le document avec le nouveau chemin de l'image
+      uploadEdiit.picture = nouveauCheminfichier;
+    }
+
+    // Mettez à jour les autres champs
+    uploadEdiit.description = req.body.description;
+
+    // Enregistrez le document mis à jour
+    const updateUpload = await uploadEdiit.save();
+
     res.status(200).json(updateUpload);
   } catch (error) {
     res.status(500).json({
-      message: "une erreur s'est produit lors de la mise a jours des posts",
+      message: "une erreur s'est produite lors de la mise à jour des posts",
       error,
     });
   }
 };
+
 
 module.exports.deleteUploadPost = async (req, res) => {
   try {

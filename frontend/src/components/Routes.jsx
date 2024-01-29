@@ -40,7 +40,7 @@ const Routes = () => {
               to="/dashboard"
               className={({ isActive }) => (isActive ? "is_active" : "")}
             >
-              dashboard
+              Dashboard
             </NavLink>
           )}
           {token && (
