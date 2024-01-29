@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 
+const maxAge = 3 * 24 * 60 * 60 * 1000;
 exports.login = async (req, res) => {
   const predefinedUsername = "avenir";
   const predefinedPassword = "semer_avenir";
@@ -35,7 +36,7 @@ exports.login = async (req, res) => {
       },
     };
     const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "5min",
+      expiresIn: maxAge,
     });
 
     res.status(200).json({ token });

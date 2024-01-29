@@ -45,7 +45,7 @@ const AdminLogin = () => {
   if (token) {
     window.location = "/dashboard";
 
-    //si lutilisateur est connect on le redirige veres le dashboard
+    //si lutilisateur est connecté on le redirige veres le dashboard
   }
   if (isLoggedIn) {
     window.location = "/dashboard";

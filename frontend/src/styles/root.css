@@ -14,6 +14,7 @@ a {
 .hearder_root {
   background-color: #2c3e50;
   color: white;
+  margin-bottom: 16px;
 }
 .logo_sumer {
   display: block;
@@ -23,7 +24,7 @@ a {
 }
 nav {
   text-align: center;
-  margin-bottom: 16px;
+
   line-height: 1.6;
 }
 nav a {
@@ -44,9 +45,6 @@ nav a:hover {
   nav a {
     display: block;
   }
-  nav a {
-    margin: 0 90px;
-  }
 }
 
 @media only screen and (min-width: 760px) {
@@ -57,8 +55,8 @@ nav a:hover {
     height: 64px;
     padding: 0 25px;
   }
-  .logo_sumer,
-  nav a {
+  .logo_sumer {
     padding: 0;
+    vertical-align: baseline;
   }
 }

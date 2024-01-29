@@ -4,6 +4,14 @@ import "../styles/root.css";
 
 const Routes = () => {
   const token = window.localStorage.getItem("tokenAdmin");
+  const handleLogout = () => {
+    try {
+      window.localStorage.removeItem("tokenAdmin");
+      window.location = "/";
+    } catch (err) {
+      return err;
+    }
+  };
   return (
     <>
       <header className="hearder_root">
@@ -34,6 +42,11 @@ const Routes = () => {
             >
               dashboard
             </NavLink>
+          )}
+          {token && (
+            <>
+              <NavLink onClick={handleLogout}>Deconnexion</NavLink>
+            </>
           )}
           <NavLink
             to="/Nos actualites"
