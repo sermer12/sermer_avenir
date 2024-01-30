@@ -1,0 +1,29 @@
+.footer_container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer_container_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 15px 30px;
+}
+
+.footer_container_content_left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
