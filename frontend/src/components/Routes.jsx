@@ -25,7 +25,7 @@ const Routes = () => {
             to="/"
             className={({ isActive }) => (isActive ? "is_active" : "")}
           >
-            HomePage
+            Accueil 
           </NavLink>
           <NavLink
             to="/Qui sommes-nous"
