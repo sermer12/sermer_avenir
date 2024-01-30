@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "../styles/root.css";
+import sumerLogo from "../assets/Semer l'avenir - Logo.jpg";
+import "../styles/logoNav.css";
 
 const Routes = () => {
   const token = window.localStorage.getItem("tokenAdmin");
@@ -15,7 +17,9 @@ const Routes = () => {
   return (
     <>
       <header className="hearder_root">
-        <div className="logo_sumer">LOGO</div>
+        <div className="logo_sumer">
+          <img src={sumerLogo} alt="logo sumer avenir" />
+        </div>
         <nav>
           <NavLink
             to="/"
@@ -35,19 +39,6 @@ const Routes = () => {
           >
             Nos formations
           </NavLink>
-          {token && (
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) => (isActive ? "is_active" : "")}
-            >
-              Dashboard
-            </NavLink>
-          )}
-          {token && (
-            <>
-              <NavLink onClick={handleLogout}>Deconnexion</NavLink>
-            </>
-          )}
           <NavLink
             to="/Nos actualites"
             className={({ isActive }) => (isActive ? "is_active" : "")}
@@ -61,6 +52,19 @@ const Routes = () => {
           >
             Contact
           </NavLink>
+          {token && (
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) => (isActive ? "is_active" : "")}
+            >
+              Dashboard
+            </NavLink>
+          )}
+          {token && (
+            <>
+              <NavLink onClick={handleLogout}>Deconnexion</NavLink>
+            </>
+          )}
         </nav>
       </header>
       <div className="container">

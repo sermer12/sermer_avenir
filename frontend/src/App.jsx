@@ -31,14 +31,7 @@ const router = createBrowserRouter([
         path: "Nos actualites",
         element: <Actualiter />,
       },
-      {
-        path: "dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "Contact",
         element: <Contact />,
@@ -46,6 +39,14 @@ const router = createBrowserRouter([
       {
         path: "adminLogin",
         element: <AdminLogin />,
+      },
+      {
+        path: "dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
     ],
   },
