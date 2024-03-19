@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 exports.login = async (req, res) => {
-  const predefinedUsername = process.env.USERNAME;
+  const predefinedUsername = process.env.USERNAME_TOKEN;
   const predefinedPassword = process.env.PASSWORD;
 
   const { username, password } = req.body;

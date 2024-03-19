@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/adminLogin.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
@@ -9,7 +8,6 @@ const AdminLogin = () => {
   const [error, setError] = useState("");
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
