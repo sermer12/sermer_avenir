@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import '../styles/contact.css';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [subscribeNewsletter, setSubscribeNewsletter] = useState(false);
-
-  const handleCheckboxChange = (e) => {
-    setSubscribeNewsletter(e.target.checked);
-  };
+  const form = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    emailjs
+      //J'ai déjà testé avec mes ID (ça fonctionne très bien !)
+      .sendForm('SERVICE_ID', 'TEMPLATE_ID', form.current, {
+        publicKey: 'valeur publicKey',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
     setTimeout(() => {
       setShowSuccessMessage(true);
       e.target.reset();
@@ -18,6 +28,7 @@ function Contact() {
         setShowSuccessMessage(false);
       }, 1500);
     });
+
   };
 
   return (
@@ -25,28 +36,25 @@ function Contact() {
       <h2>CONTACTEZ-NOUS</h2>
       <div className="contact-info">
         <p>Veuillez remplir ce formulaire afin de nous contacter</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} ref={form}>
           <div className="form-group">
             <label htmlFor="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" required />
+            <input type="text" id="nom" name="user_name" required />
           </div>
           <div className="form-group">
             <label htmlFor="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom" required />
+            <input type="text" id="prenom" name="user_prenom" required />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email :</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="user_email" required />
           </div>
           <div className="form-group">
             <label htmlFor="message">Message :</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <textarea id="message" name="message" r
+              ows="5" required></textarea>
           </div>
           <div className="form-group">
-            <label>
-              <span>Recevoir les newsletters de l'association</span>
-              <input className="checkB" type="checkbox" checked={subscribeNewsletter} onChange={handleCheckboxChange} />
-            </label>
           </div>
           <button type="submit">Envoyer</button>
         </form>
