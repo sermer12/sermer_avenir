@@ -1,0 +1,46 @@
+/* formations.css */
+
+.formations-container-wrapper {
+  margin: 0 auto; /* Pour centrer le contenu */
+}
+
+.formations-container h1 {
+  text-align: center;
+}
+.formations-container .no-formation {
+  text-align: center;
+}
+
+.formations-container {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  width: 100px;
+  font-size: 16px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button.download {
+  background-color: #4caf50; /* Vert */
+  color: white;
+  margin-left: 5px;
+  text-align: center;
+}
+
+button.signup {
+  background-color: #ff0000; /* Rouge */
+  color: white;
+  margin-left: 20px;
+}

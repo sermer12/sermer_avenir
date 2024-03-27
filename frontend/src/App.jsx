@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
 import AdminLogin from "./components/AdminLogin";
 import PrivateRoute from "./utils/PrivateRoute";
+import AddFormation from "./pages/AddFormation";
+import EditFormation from "./pages/EditFormation";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,16 @@ const router = createBrowserRouter([
             <Dashboard />
           </PrivateRoute>
         ),
+        children: [
+          {
+            path: "addformation",
+            element: <AddFormation />,
+          },
+          {
+            path: "editformation",
+            element: <EditFormation />,
+          },
+        ],
       },
     ],
   },

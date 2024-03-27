@@ -3,6 +3,8 @@ import { NavLink, Outlet } from "react-router-dom";
 import "../styles/root.css";
 import sumerLogo from "../assets/Semer l'avenir - Logo.jpg";
 import "../styles/logoNav.css";
+import { FormationsContext } from "../context/FormationsContext";
+import { useAppState } from "../repository/FormationsRepository";
 
 const Routes = () => {
   const token = window.localStorage.getItem("tokenAdmin");
@@ -15,7 +17,7 @@ const Routes = () => {
     }
   };
   return (
-    <>
+    <FormationsContext.Provider value={useAppState()}>
       <header className="hearder_root">
         <div className="logo_sumer">
           <img src={sumerLogo} alt="logo sumer avenir" />
@@ -25,7 +27,7 @@ const Routes = () => {
             to="/"
             className={({ isActive }) => (isActive ? "is_active" : "")}
           >
-            Accueil 
+            Accueil
           </NavLink>
           <NavLink
             to="/Qui sommes-nous"
@@ -70,7 +72,7 @@ const Routes = () => {
       <div className="container">
         <Outlet />
       </div>
-    </>
+    </FormationsContext.Provider>
   );
 };
 
