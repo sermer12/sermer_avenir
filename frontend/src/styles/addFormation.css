@@ -1,0 +1,40 @@
+.creation-formation {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formation-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formation-form input[type="date"],
+.formation-form input[type="text"],
+.formation-form textarea,
+.formation-form input[type="file"],
+.formation-form input[type="submit"] {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.formation-form textarea {
+  resize: vertical; /* Permet à l'utilisateur de redimensionner verticalement le textarea */
+}
+
+.formation-form input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 320px;
+}
+
+.formation-form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+.form-title {
+  text-align: center;
+}
