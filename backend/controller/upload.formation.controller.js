@@ -33,7 +33,7 @@ const imageFilter = function (req, file, cb) {
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "frontend/public/uploads/posts/picture"); // Remplacez par le chemin de votre dossier d'images
+      cb(null, "./uploads/posts/pictures"); // Remplacez par le chemin de votre dossier d'images
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = "image_upload_";
@@ -109,12 +109,13 @@ module.exports.editeUploadPost = async (req, res) => {
     // Vérifiez si un nouveau fichier est téléchargé
     if (req.file) {
       // Gérez le téléchargement du nouveau fichier
-      const nouveauCheminfichier = "frontend/public/uploads/posts/picture/" + req.file.filename;
+      const nouveauCheminfichier =
+        "frontend/public/uploads/posts/picture/" + req.file.filename;
 
       // Supprimez le fichier image existant s'il existe
       if (uploadEdiit.picture) {
         // Utilisez fs.unlink ou votre méthode préférée pour supprimer le fichier
-         fs.unlinkSync(uploadEdiit.picture);
+        fs.unlinkSync(uploadEdiit.picture);
       }
 
       // Mettez à jour le document avec le nouveau chemin de l'image
@@ -135,7 +136,6 @@ module.exports.editeUploadPost = async (req, res) => {
     });
   }
 };
-
 
 module.exports.deleteUploadPost = async (req, res) => {
   try {

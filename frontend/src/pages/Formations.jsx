@@ -7,7 +7,7 @@ import "../styles/formations.css";
 
 const Formations = () => {
   const [appState, setAppState] = useContext(FormationsContext);
-  console.log(appState);
+ 
 
   useEffect(() => {
     handleGetFormations();
@@ -54,13 +54,9 @@ const Formations = () => {
                 <td>{post.place}</td>
                 <td>{post.description}</td>
                 <td>
-                  <button
-                    href={post.document_pdf}
-                    className="download"
-                    download
-                  >
+                  <a href={post.document_pdf} className="download" download>
                     Télécharger
-                  </button>
+                  </a>
                 </td>
                 <td>
                   <button className="signup">S'inscrire</button>
