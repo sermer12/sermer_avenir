@@ -32,11 +32,13 @@ th {
   background-color: #f2f2f2;
 }
 
-button.download {
+.download {
   background-color: #4caf50; /* Vert */
   color: white;
   margin-left: 5px;
   text-align: center;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 button.signup {
