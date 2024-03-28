@@ -2,8 +2,11 @@
   background-color: #f8f9fa;
   padding: 20px 0;
   text-align: center;
-  position: fixed;
-  bottom: 0;
+}
+.footer-name {
+  height: 20px;
+  bottom: 50px;
+  position: absolute;
   width: 100%;
 }
 
