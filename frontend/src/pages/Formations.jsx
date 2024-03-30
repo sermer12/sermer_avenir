@@ -1,5 +1,3 @@
-// Formations.js
-
 import React, { useContext, useEffect } from "react";
 import { FormationsContext } from "../context/FormationsContext";
 import { getFormations } from "../repository/FormationsRepository";
@@ -7,7 +5,6 @@ import "../styles/formations.css";
 
 const Formations = () => {
   const [appState, setAppState] = useContext(FormationsContext);
- 
 
   useEffect(() => {
     handleGetFormations();
@@ -30,6 +27,13 @@ const Formations = () => {
     });
     return newDate;
   };
+  const showPdf = (pdf) => {
+    window.open(
+      `http://localhost:5000/uploads/posts/pdf/${pdf}`,
+      "_blank",
+      "noreferrer"
+    );
+  };
 
   return (
     <div className="formations-container-wrapper">
@@ -47,16 +51,38 @@ const Formations = () => {
             </tr>
           </thead>
           <tbody>
-            {appState.formations.map((post, index) => (
+            {appState.formations.map((formation, index) => (
               <tr key={index}>
-                <td>{dateFormater(post.date)}</td>
-                <td>{post.name}</td>
-                <td>{post.place}</td>
-                <td>{post.description}</td>
+                <td className="formation-periode">
+                  {dateFormater(formation.date)} {""}{" "}
+                  <strong>
+                    {" "}
+                    {formation.heure && (
+                      <span className="hour-periode">
+                        {" "}
+                        <span  className="periode-a">à </span>
+                        {formation.heure}
+                      </span>
+                    )}{" "}
+                  </strong>
+                </td>
+                <td>{formation.name}</td>
+                <td>{formation.place}</td>
+                <td>{formation.description}</td>
                 <td>
-                  <a href={post.document_pdf} className="download" download>
-                    Télécharger
-                  </a>
+                  {formation.document_pdf && (
+                    <a
+                      // href={formation.document_pdf}
+                      // target="_blank"
+                      // type="application/pdf"
+                      // rel="alternate"
+                      onClick={() => showPdf(formation.document_pdf)}
+                      className="download"
+                    >
+                      {" "}
+                      Télécharger
+                    </a>
+                  )}
                 </td>
                 <td>
                   <button className="signup">S'inscrire</button>

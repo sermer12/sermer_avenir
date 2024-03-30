@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import axios from "axios"; // Assurez-vous que axios est importé
 
 import "../styles/addFormation.css";
 import { FormationsContext } from "../context/FormationsContext";
@@ -11,6 +10,7 @@ const AddFormation = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState();
+  const [heure, setHeure] = useState("");
   const [state, setState] = useContext(FormationsContext);
 
   const handleSaveFormation = (event) => {
@@ -21,6 +21,7 @@ const AddFormation = () => {
     formData.append("date", date);
     formData.append("place", place);
     formData.append("name", name);
+    formData.append("heure", heure);
     formData.append("description", description);
 
     saveFormations(formData)
@@ -45,6 +46,7 @@ const AddFormation = () => {
           className="formation-form"
           onSubmit={handleSaveFormation}
           method="post"
+          encType="multipart/form-data"
         >
           <label htmlFor="date" className="date">
             Saisir la date
@@ -57,6 +59,11 @@ const AddFormation = () => {
             onChange={(e) => setDate(e.target.value)}
             required
           />
+          <label for="heure">Choisissez une heure :</label>
+          <input type="time" id="heure" name="heure"
+          value={heure}
+           onChange={(e) => setHeure(e.target.value)}
+          ></input>
           <label htmlFor="place">Saisir le lieu</label>
           <input
             type="text"
@@ -93,7 +100,6 @@ const AddFormation = () => {
             accept=".pdf"
             placeholder="Sélectionner un fichier PDF"
             onChange={(e) => setFile(e.target.files[0])} // Mettre à jour l'état du fichier
-            required
           />
           <input type="submit" value="envoyer" />
         </form>

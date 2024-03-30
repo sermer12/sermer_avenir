@@ -13,12 +13,13 @@ const app = express();
 
 app.use(
   cors({
-    //Remplacez l'url origin par le local front 
+    //Remplacez l'url origin par le local front
     origin: "http://localhost:5173",
     credentials: true,
     optionsSuccessStatus: 200,
   })
 );
+app.use("/uploads/posts/pdf/", express.static("uploads/posts/pdf/"));
 
 //middlewer pour traiter la  request
 app.use(express.json());

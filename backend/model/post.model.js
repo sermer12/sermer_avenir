@@ -29,6 +29,10 @@ const postSchema = mongoose.Schema(
     document_pdf: {
       type: String,
     },
+    heure: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

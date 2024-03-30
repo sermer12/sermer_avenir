@@ -8,6 +8,7 @@
   bottom: 50px;
   position: absolute;
   width: 100%;
+  margin-bottom: -200px;
 }
 
 .footer_container_content {
