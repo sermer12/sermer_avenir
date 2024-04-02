@@ -5,12 +5,12 @@ import { FormationsContext } from "../context/FormationsContext";
 import { saveFormations } from "../repository/FormationsRepository";
 
 const AddFormation = () => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [place, setPlace] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState();
-  const [heure, setHeure] = useState("");
+  const [heure, setHeure] = useState("15:30");
   const [state, setState] = useContext(FormationsContext);
 
   const handleSaveFormation = (event) => {
@@ -30,7 +30,11 @@ const AddFormation = () => {
           ...state,
           formations: [...state.formations, response.data],
         });
-        alert(JSON.stringify(response.data));
+        // alert(JSON.stringify(response.data));
+        setPlace("");
+        setName("");
+        setDescription("");
+        setFile("");
       })
       .catch((error) => {
         // Gérer les erreurs
@@ -60,9 +64,12 @@ const AddFormation = () => {
             required
           />
           <label for="heure">Choisissez une heure :</label>
-          <input type="time" id="heure" name="heure"
-          value={heure}
-           onChange={(e) => setHeure(e.target.value)}
+          <input
+            type="time"
+            id="heure"
+            name="heure"
+            value={heure}
+            onChange={(e) => setHeure(e.target.value)}
           ></input>
           <label htmlFor="place">Saisir le lieu</label>
           <input

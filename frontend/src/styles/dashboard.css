@@ -1,5 +1,4 @@
 .dashboard-container {
-  height: 100%; /* Assurez-vous que le conteneur du tableau de bord prend toute la hauteur disponible */
   display: flex;
 }
 
@@ -13,5 +12,4 @@
 
 .dashboard-content {
   flex-grow: 1;
-  padding: 20px;
 }
