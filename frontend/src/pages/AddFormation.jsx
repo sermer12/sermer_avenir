@@ -30,7 +30,7 @@ const AddFormation = () => {
           ...state,
           formations: [...state.formations, response.data],
         });
-        alert(JSON.stringify(response.data));
+        // alert(JSON.stringify(response.data));
         setPlace("");
         setName("");
         setDescription("");
