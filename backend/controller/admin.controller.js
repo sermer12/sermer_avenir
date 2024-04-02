@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 
-const maxAge = 3 * 24 * 60 * 60 * 1000;
+const maxAge = 4 * 60 * 60 * 1000;
 exports.login = async (req, res) => {
   const predefinedUsername = process.env.USERNAME_TOKEN;
   const predefinedPassword = process.env.PASSWORD;
