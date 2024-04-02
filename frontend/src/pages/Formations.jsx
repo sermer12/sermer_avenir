@@ -60,7 +60,7 @@ const Formations = () => {
                     {formation.heure && (
                       <span className="hour-periode">
                         {" "}
-                        <span  className="periode-a">à </span>
+                        <span className="periode-a">à </span>
                         {formation.heure}
                       </span>
                     )}{" "}

@@ -36,8 +36,6 @@ module.exports.setPost = [
     try {
       // Définir le chemin du document PDF correctement
       const fileName = req.file.filename;
-      console.log("filee", req.file);
-
       const post = await PostModel.create({
         date: req.body.date,
         place: req.body.place,

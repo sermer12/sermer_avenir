@@ -30,19 +30,19 @@ const Routes = () => {
             Accueil
           </NavLink>
           <NavLink
-            to="/Qui sommes-nous"
+            to="/Qui-sommes-nous"
             className={({ isActive }) => (isActive ? "is_active" : "")}
           >
             Qui sommes-nous
           </NavLink>
           <NavLink
-            to="/Nos formations"
+            to="/Nos-formations"
             className={({ isActive }) => (isActive ? "is_active" : "")}
           >
             Nos formations
           </NavLink>
           <NavLink
-            to="/Nos actualites"
+            to="/Nos-actualites"
             className={({ isActive }) => (isActive ? "is_active" : "")}
           >
             Nos actualités

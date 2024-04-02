@@ -9,7 +9,7 @@ const AddFormation = () => {
   const [place, setPlace] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
   const [heure, setHeure] = useState("15:30");
   const [state, setState] = useContext(FormationsContext);
 
@@ -30,11 +30,11 @@ const AddFormation = () => {
           ...state,
           formations: [...state.formations, response.data],
         });
-        // alert(JSON.stringify(response.data));
+        alert(JSON.stringify(response.data));
         setPlace("");
         setName("");
         setDescription("");
-        setFile("");
+        setFile(null);
       })
       .catch((error) => {
         // Gérer les erreurs
