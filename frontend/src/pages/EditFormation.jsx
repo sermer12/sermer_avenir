@@ -7,7 +7,6 @@ import {
 
 const EditFormation = () => {
   const [appState, setAppState] = useContext(FormationsContext);
-  console.log("dd", appState);
   useEffect(() => {
     handleGetFormations();
   }, []);
@@ -47,7 +46,9 @@ const EditFormation = () => {
       <div className="formations-container">
         <h1>Vous pouvez éditer des formations</h1>
         {appState.formations.length === 0 ? (
-          <h2 className="no-formation-content">Aucune formation à éditer pour le moment !</h2>
+          <h2 className="no-formation-content">
+            Aucune formation à éditer pour le moment !
+          </h2>
         ) : (
           <table>
             <thead>

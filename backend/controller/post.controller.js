@@ -1,7 +1,7 @@
 const express = require("express");
 const PostModel = require("../model/post.model");
 const multer = require("multer");
-
+const fs = require("fs");
 module.exports.getPost = async (req, res) => {
   try {
     const posts = await PostModel.find();
@@ -83,6 +83,16 @@ module.exports.deletePost = async (req, res) => {
     if (!post) {
       return res.status(400).json({ message: "ce post n'existe pas" });
     }
+    //suppression du PDF associer
+    const pdfPath = "./uploads/posts/pdf/" + post.document_pdf;
+    fs.unlink(pdfPath, (err) => {
+      if (err) {
+        console.error(
+          "Une erreur s'est produite lors de la suppression du fichier PDF :",
+          err
+        );
+      }
+    });
     await post.deleteOne({ _id: req.params.id });
     res.status(200).json({
       message:
