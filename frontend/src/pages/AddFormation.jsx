@@ -11,7 +11,7 @@ const AddFormation = () => {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
   const [heure, setHeure] = useState("15:30");
-  const [state, setState] = useContext(FormationsContext);
+  const [appState, setAppState] = useContext(FormationsContext);
 
   const handleSaveFormation = (event) => {
     event.preventDefault();
@@ -26,9 +26,9 @@ const AddFormation = () => {
 
     saveFormations(formData)
       .then((response) => {
-        setState({
-          ...state,
-          formations: [...state.formations, response.data],
+        setAppState({
+          ...appState,
+          formations: [...appState.formations, response.data],
         });
         // alert(JSON.stringify(response.data));
         setPlace("");

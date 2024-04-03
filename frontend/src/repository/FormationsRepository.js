@@ -7,15 +7,15 @@ export const getFormations = () => {
   return api.get("/post");
 };
 
-export const saveFormations = (post) => {
-  return api.post("/post", post);
+export const saveFormations = (formation) => {
+  return api.post("/post", formation);
 };
-export const updateFormation = (post) => {
-  return api.put(`/post/${post.id}`, product);
+export const updateFormation = (formation) => {
+  return api.put(`/post/${formation._id}`, formation);
 };
 
-export const deleteFormation = (post) => {
-  return api.delete(`/products/${post.id}`);
+export const deleteFormation = (formation) => {
+  return api.delete(`/post/${formation._id}`);
 };
 
 export const useAppState = () => {

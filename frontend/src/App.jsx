@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         ),
         children: [
           {
-            path: "addformation",
+            path: "/dashboard",
             element: <AddFormation />,
           },
           {

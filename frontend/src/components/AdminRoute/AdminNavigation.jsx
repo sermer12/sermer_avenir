@@ -6,7 +6,7 @@ export const AdminNavigation = () => {
   return (
     <div className="dashboard-container">
       <nav className="dashboard-nav">
-        <NavLink to="/dashboard/addformation">ajouterFormation</NavLink>
+        <NavLink to="/dashboard">ajouterFormation</NavLink>
         <NavLink to="/dashboard/editformation">EditerFormation</NavLink>
       </nav>
 
