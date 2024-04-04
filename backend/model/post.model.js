@@ -33,6 +33,10 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    google_link: {
+      type: String,
+      require: true,
+    },
   },
   {
     timestamps: true,

@@ -91,7 +91,15 @@ const Formations = () => {
                     )}
                   </td>
                   <td>
-                    <button className="signup">S'inscrire</button>
+                    <button className="signup">
+                      <a
+                        href={formation.google_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        S'inscrire
+                      </a>
+                    </button>
                   </td>
                 </tr>
               ))}

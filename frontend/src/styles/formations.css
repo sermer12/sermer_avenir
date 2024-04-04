@@ -55,6 +55,8 @@ button.signup {
   background-color: #ff0000; /* Rouge */
   color: white;
   margin-left: 20px;
+  font-size: 14px;
+  border-radius: 5px;
 }
 .no-formation-content {
   text-align: center;

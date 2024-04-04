@@ -11,6 +11,7 @@ const AddFormation = () => {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
   const [heure, setHeure] = useState("15:30");
+  const [link, setLink] = useState("");
   const [appState, setAppState] = useContext(FormationsContext);
 
   const handleSaveFormation = (event) => {
@@ -22,6 +23,7 @@ const AddFormation = () => {
     formData.append("place", place);
     formData.append("name", name);
     formData.append("heure", heure);
+    formData.append("link", link);
     formData.append("description", description);
 
     saveFormations(formData)
@@ -87,6 +89,16 @@ const AddFormation = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <label htmlFor="link">Le lien de la formation</label>
+          <input
+            type="text"
+            name="link"
+            id="link"
+            value={link}
+            placeholder="lien de la formation"
+            onChange={(e) => setLink(e.target.value)}
             required
           />
           <label htmlFor="description">La description</label>
