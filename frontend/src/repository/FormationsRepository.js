@@ -11,7 +11,7 @@ export const saveFormations = (formation) => {
   return api.post("/post", formation);
 };
 export const updateFormation = (formation) => {
-  return api.put(`/post/${formation._id}`, formation);
+  return api.put(`/post/${formation.id}`, formation);
 };
 
 export const deleteFormation = (formation) => {
