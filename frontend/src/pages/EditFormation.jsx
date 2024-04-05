@@ -29,10 +29,22 @@ const EditFormation = () => {
       });
     });
   };
+
   const handleEditFormation = (formationId) => {
-    // Fonction pour mettre à jour l'ID de la formation à éditer
+    // Trouver la formation à éditer en fonction de son ID
+    const formationToEdit = appState.formations.find(
+      (formation) => formation._id === formationId
+    );
+
+    // Mettre à jour les états avec les détails de la formation à éditer
+    setDate(formationToEdit.date);
+    setPlace(formationToEdit.place);
+    setName(formationToEdit.name);
+    setDescription(formationToEdit.description);
+    setHeure(formationToEdit.heure);
+    setLink(formationToEdit.link);
     setId(formationId);
-    setUpDate(true);
+    setUpDate((prev) => !prev);
   };
 
   const handleUpdateFormation = (event) => {
@@ -58,6 +70,7 @@ const EditFormation = () => {
     });
     return newDate;
   };
+
   const handleDeleteFormations = (formation) => {
     deleteFormation(formation)
       .then((res) => {
