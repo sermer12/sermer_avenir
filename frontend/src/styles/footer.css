@@ -4,11 +4,9 @@
   text-align: center;
 }
 .footer-name {
-  height: 20px;
   bottom: 0px;
-  position: absolute;
+  position: fixed;
   width: 100%;
-  margin-bottom: -220px;
 }
 
 .footer_container_content {

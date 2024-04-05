@@ -7,7 +7,7 @@ import {
 } from "../repository/FormationsRepository";
 
 const EditFormation = () => {
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [date, setDate] = useState(new Date());
   const [place, setPlace] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -36,13 +36,19 @@ const EditFormation = () => {
       (formation) => formation._id === formationId
     );
 
+    // Convertir la date en objet Date
+    const dateObject = new Date(formationToEdit.date);
+
+    // Convertir la date en format ISO
+    const isoDate = dateObject.toISOString().split("T")[0];
+
     // Mettre à jour les états avec les détails de la formation à éditer
-    setDate(formationToEdit.date);
+    setDate(isoDate);
     setPlace(formationToEdit.place);
     setName(formationToEdit.name);
     setDescription(formationToEdit.description);
     setHeure(formationToEdit.heure);
-    setLink(formationToEdit.link);
+    setLink(formationToEdit.google_link);
     setId(formationId);
     setUpDate((prev) => !prev);
   };
@@ -52,13 +58,12 @@ const EditFormation = () => {
     const data = { id, date, place, name, heure, link, description };
     updateFormation(data).then((resp) => {
       let updateFormations = resp.data;
-      console.log("ee", updateFormations);
       let newFormations = appState.formations.map((p) =>
         p._id == updateFormations._id ? updateFormations : p
       );
       setUpDate(false);
       setAppState({ ...appState, formations: newFormations });
-      alert(JSON.stringify(updateFormations));
+      alert(" Formation mis a jour avec success ");
     });
   };
 
@@ -83,7 +88,6 @@ const EditFormation = () => {
         console.log(err);
       });
   };
-
   return (
     <div className="formations-container-wrapper">
       {upDate ? (

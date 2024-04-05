@@ -2,6 +2,7 @@
 
 .formations-container-wrapper {
   margin: 0 auto; /* Pour centrer le contenu */
+  margin-bottom: auto;
 }
 
 .formations-container h1 {
@@ -62,4 +63,10 @@ button.signup {
   text-align: center;
   margin-left: 0 auto;
   color: red;
+}
+.succes-sending {
+  color: green;
+  box-shadow: #4caf50;
+  font-size: 14px;
+  font-weight: 400;
 }

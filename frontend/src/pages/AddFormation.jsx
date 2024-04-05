@@ -32,10 +32,11 @@ const AddFormation = () => {
           ...appState,
           formations: [...appState.formations, response.data],
         });
-        // alert(JSON.stringify(response.data));
+        alert("Formation ajouté avec success");
         setPlace("");
         setName("");
         setDescription("");
+        setLink("");
         setFile(null);
       })
       .catch((error) => {
