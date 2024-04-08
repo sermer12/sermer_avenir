@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import '../styles/contact.css';
-import emailjs from '@emailjs/browser';
+import "../styles/contact.css";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -10,16 +10,16 @@ function Contact() {
     e.preventDefault();
     emailjs
       //J'ai déjà testé avec mes ID (ça fonctionne très bien !)
-      .sendForm('SERVICE_ID', 'TEMPLATE_ID', form.current, {
-        publicKey: 'valeur publicKey',
+      .sendForm("SERVICE_ID", "TEMPLATE_ID", form.current, {
+        publicKey: "valeur publicKey",
       })
       .then(
         () => {
-          console.log('SUCCESS!');
+          console.log("SUCCESS!");
         },
         (error) => {
-          console.log('FAILED...', error.text);
-        },
+          console.log("FAILED...", error.text);
+        }
       );
     setTimeout(() => {
       setShowSuccessMessage(true);
@@ -28,12 +28,11 @@ function Contact() {
         setShowSuccessMessage(false);
       }, 1500);
     });
-
   };
 
   return (
     <div className="contact-page">
-      <h2>CONTACTEZ-NOUS</h2>
+      <h2>NOUS-CONTACTEZ</h2>
       <div className="contact-info">
         <p>Veuillez remplir ce formulaire afin de nous contacter</p>
         <form onSubmit={handleSubmit} ref={form}>
@@ -51,18 +50,14 @@ function Contact() {
           </div>
           <div className="form-group">
             <label htmlFor="message">Message :</label>
-            <textarea id="message" name="message" r
-              ows="5" required></textarea>
+            <textarea id="message" name="message" r ows="5" required></textarea>
           </div>
-          <div className="form-group">
-          </div>
+          <div className="form-group"></div>
           <button type="submit">Envoyer</button>
         </form>
       </div>
       {showSuccessMessage && (
-        <div className="success-message">
-          Message envoyé avec succès !
-        </div>
+        <div className="success-message">Message envoyé avec succès !</div>
       )}
     </div>
   );
