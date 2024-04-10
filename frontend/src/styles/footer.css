@@ -1,7 +1,8 @@
 .footer_container {
-  background-color: #f8f9fa;
+  background-color: #154c2e;
   padding: 20px 0;
   text-align: center;
+  color: #ffff;
 }
 
 #root {
@@ -35,11 +36,12 @@
 }
 
 .footer_container_content h3 {
-  color: #333;
+  color: inherit;
 }
 
 .footer_container_content a {
-  color: #007bff;
+  color: inherit;
+  font-weight: bold;
   text-decoration: none;
 }
 
