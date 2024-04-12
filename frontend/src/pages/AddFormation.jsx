@@ -5,7 +5,8 @@ import { FormationsContext } from "../context/FormationsContext";
 import { saveFormations } from "../repository/FormationsRepository";
 
 const AddFormation = () => {
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [date_d, setDate_d] = useState(new Date().toISOString().slice(0, 10));
+  const [date_f, setDate_f] = useState(new Date().toISOString().slice(0, 10));
   const [place, setPlace] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -19,7 +20,8 @@ const AddFormation = () => {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("date", date);
+    formData.append("date_d", date_d);
+    formData.append("date_f", date_f);
     formData.append("place", place);
     formData.append("name", name);
     formData.append("heure", heure);
@@ -47,7 +49,7 @@ const AddFormation = () => {
 
   return (
     <>
-      <h1 className="form-title">Vous pouvez ajouter une nouvelle formation</h1>
+      <h1 className="form-title">Ajoutez une nouvelle formation</h1>
       <div className="creation-formation">
         <form
           className="formation-form"
@@ -56,24 +58,27 @@ const AddFormation = () => {
           encType="multipart/form-data"
         >
           <label htmlFor="date" className="date">
-            Saisir la date
+            Saisir la date de debut
           </label>
           <input
             type="date"
-            name="date"
-            id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            name="date_d"
+            id="date_d"
+            value={date_d}
+            onChange={(e) => setDate_d(e.target.value)}
             required
           />
-          <label for="heure">Choisissez une heure :</label>
+          <label htmlFor="date" className="date">
+            Saisir la date de fin
+          </label>
           <input
-            type="time"
-            id="heure"
-            name="heure"
-            value={heure}
-            onChange={(e) => setHeure(e.target.value)}
-          ></input>
+            type="date"
+            name="date_f"
+            id="date_f"
+            value={date_f}
+            onChange={(e) => setDate_f(e.target.value)}
+            required
+          />
           <label htmlFor="place">Saisir le lieu</label>
           <input
             type="text"

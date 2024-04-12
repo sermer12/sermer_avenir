@@ -3,6 +3,12 @@
 .formations-container-wrapper {
   margin: 0 auto; /* Pour centrer le contenu */
   margin-bottom: auto;
+  max-width: 1600px;
+}
+.formaation_descrption {
+  padding: 0 30px;
+  width: 500px;
+  flex-wrap: nowrap;
 }
 
 .formations-container h1 {
@@ -31,11 +37,14 @@ td {
 .formation-periode {
   padding-left: 20px;
 }
-.hour-periode {
+/* .hour-periode {
   padding-left: 40px;
-}
+} */
 .periode-a {
   padding-right: 10px;
+}
+.edit_format {
+  padding: 0 30px;
 }
 
 th {

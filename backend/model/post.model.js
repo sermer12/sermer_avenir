@@ -7,7 +7,12 @@ const postSchema = mongoose.Schema(
       default: uuidv4,
       required: true,
     },
-    date: {
+    date_debut: {
+      type: Date,
+      required: true,
+    },
+
+    date_fin: {
       type: Date,
       required: true,
     },
@@ -28,10 +33,6 @@ const postSchema = mongoose.Schema(
     },
     document_pdf: {
       type: String,
-    },
-    heure: {
-      type: String,
-      required: true,
     },
     google_link: {
       type: String,

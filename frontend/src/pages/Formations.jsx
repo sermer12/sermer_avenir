@@ -59,22 +59,22 @@ const Formations = () => {
             <tbody>
               {appState.formations.map((formation, index) => (
                 <tr key={index}>
-                  <td className="formation-periode">
-                    {dateFormater(formation.date)} {""}{" "}
-                    <strong>
-                      {" "}
-                      {formation.heure && (
-                        <span className="hour-periode">
-                          {" "}
-                          <span className="periode-a">à </span>
-                          {formation.heure}
-                        </span>
-                      )}{" "}
-                    </strong>
+                  <td className="formation-periode ">
+                    Du {dateFormater(formation.date_debut)}
+                    <br />
+                    <br />
+                    {formation.date_fin && (
+                      <span className="hour-periode">
+                        <span className="periode-a"> Au</span>
+                        {dateFormater(formation.date_fin)}
+                      </span>
+                    )}
                   </td>
                   <td>{formation.name}</td>
                   <td>{formation.place}</td>
-                  <td>{formation.description}</td>
+                  <td className="formaation_descrption">
+                    {formation.description}
+                  </td>
                   <td>
                     {formation.document_pdf && (
                       <a

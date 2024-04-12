@@ -7,12 +7,12 @@ import {
 } from "../repository/FormationsRepository";
 
 const EditFormation = () => {
-  const [date, setDate] = useState(new Date());
+  const [date_d, setDate_d] = useState(new Date().toISOString().slice(0, 10));
+  const [date_f, setDate_f] = useState(new Date().toISOString().slice(0, 10));
   const [place, setPlace] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   // const [file, setFile] = useState(null);
-  const [heure, setHeure] = useState("15:30");
   const [link, setLink] = useState("");
   const [id, setId] = useState(null);
   const [upDate, setUpDate] = useState(false);
@@ -37,17 +37,24 @@ const EditFormation = () => {
     );
 
     // Convertir la date en objet Date
-    const dateObject = new Date(formationToEdit.date);
+    const dateObject_debut = new Date(formationToEdit.date_debut);
 
     // Convertir la date en format ISO
-    const isoDate = dateObject.toISOString().split("T")[0];
+    const isoDate_debut = dateObject_debut.toISOString().split("T")[0];
+
+    //
+    const dateObject_fin = new Date(formationToEdit.date_fin);
+
+    // Convertir la date en format ISO
+    const isoDate_fin = dateObject_fin.toISOString().split("T")[0];
 
     // Mettre à jour les états avec les détails de la formation à éditer
-    setDate(isoDate);
+    setDate_d(isoDate_debut);
+    setDate_f(isoDate_fin);
     setPlace(formationToEdit.place);
     setName(formationToEdit.name);
     setDescription(formationToEdit.description);
-    setHeure(formationToEdit.heure);
+
     setLink(formationToEdit.google_link);
     setId(formationId);
     setUpDate((prev) => !prev);
@@ -55,7 +62,7 @@ const EditFormation = () => {
 
   const handleUpdateFormation = (event) => {
     event.preventDefault();
-    const data = { id, date, place, name, heure, link, description };
+    const data = { id, date_d, date_f, place, name, link, description };
     updateFormation(data).then((resp) => {
       let updateFormations = resp.data;
       let newFormations = appState.formations.map((p) =>
@@ -99,24 +106,27 @@ const EditFormation = () => {
             encType="multipart/form-data"
           >
             <label htmlFor="date" className="date">
-              Saisir la date
+              Saisir la date de debut
             </label>
             <input
               type="date"
-              name="date"
-              id="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
+              name="date_d"
+              id="date_d"
+              value={date_d}
+              onChange={(e) => setDate_d(e.target.value)}
               required
             />
-            <label for="heure">Choisissez une heure :</label>
+            <label htmlFor="date" className="date">
+              Saisir la date de fin
+            </label>
             <input
-              type="time"
-              id="heure"
-              name="heure"
-              value={heure}
-              onChange={(e) => setHeure(e.target.value)}
-            ></input>
+              type="date"
+              name="date_f"
+              id="date_f"
+              value={date_f}
+              onChange={(e) => setDate_f(e.target.value)}
+              required
+            />
             <label htmlFor="place">Saisir le lieu</label>
             <input
               type="text"
@@ -169,7 +179,7 @@ const EditFormation = () => {
         </div>
       ) : (
         <div className="formations-container">
-          <h1>Vous pouvez éditer des formations</h1>
+          <h1> Vous pouvez supprimer ou modifier une formation</h1>
           {appState.formations.length === 0 ? (
             <h2 className="no-formation-content">
               Aucune formation à éditer pour le moment !
@@ -189,22 +199,22 @@ const EditFormation = () => {
               <tbody>
                 {appState.formations.map((formation, index) => (
                   <tr key={index}>
-                    <td className="formation-periode">
-                      {dateFormater(formation.date)} {""}{" "}
-                      <strong>
-                        {" "}
-                        {formation.heure && (
-                          <span className="hour-periode">
-                            {" "}
-                            <span className="periode-a">à </span>
-                            {formation.heure}
-                          </span>
-                        )}{" "}
-                      </strong>
+                    <td className="formation-periode edit_format ">
+                      Du {dateFormater(formation.date_debut)}
+                      <br />
+                      <br />
+                      {formation.date_fin && (
+                        <span className="hour-periode">
+                          <span className="periode-a"> Au</span>
+                          {dateFormater(formation.date_fin)}
+                        </span>
+                      )}
                     </td>
                     <td>{formation.name}</td>
                     <td>{formation.place}</td>
-                    <td>{formation.description}</td>
+                    <td className="formaation_descrption">
+                      {formation.description}
+                    </td>
                     <td>
                       <button
                         className="download edite"
