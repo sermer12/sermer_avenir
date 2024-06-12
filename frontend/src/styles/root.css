@@ -38,7 +38,7 @@ nav a:hover {
 .is_active {
   color: #fff;
   padding: 5px;
-  text-decoration: underline #F2C14E;
+  text-decoration: underline #69B275;
   text-underline-offset: 5px;
   transition: 0.3s ease-in-out;
 }
