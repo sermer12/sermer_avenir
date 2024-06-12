@@ -20,7 +20,7 @@ const Routes = () => {
     <FormationsContext.Provider value={useAppState()}>
       <header className="hearder_root">
         <div className="logo_sumer">
-          <img src={sumerLogo} alt="logo sumer avenir" />
+          <img src={sumerLogo} alt="Semer l'avenir" />
         </div>
         <nav>
           <NavLink
