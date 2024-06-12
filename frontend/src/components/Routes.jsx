@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "../styles/root.css";
-import sumerLogo from "../assets/Semer l'avenir - Logo.jpg";
+import sumerLogo from "../assets/semerlavenir_newlogo.png";
 import "../styles/logoNav.css";
 import { FormationsContext } from "../context/FormationsContext";
 import { useAppState } from "../repository/FormationsRepository";
@@ -20,7 +20,7 @@ const Routes = () => {
     <FormationsContext.Provider value={useAppState()}>
       <header className="hearder_root">
         <div className="logo_sumer">
-          <img src={sumerLogo} alt="Semer l'avenir" />
+          <a href="/"><img src={sumerLogo} alt="Semer l'avenir" /></a>
         </div>
         <nav>
           <NavLink
