@@ -25,6 +25,10 @@ const Footer = () => {
                 </a>
               </p>
             </div>
+            <div className="footer_container_content_center">
+              <h3>Membre du réseau des écoles ETRE</h3>
+              <img src="src/assets/etre-removebg-preview1.png" alt="ETRE" width="180" height="100"/>
+            </div>
           </div>
         </div>
       </footer>
