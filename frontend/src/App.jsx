@@ -11,6 +11,9 @@ import AdminLogin from "./components/AdminLogin";
 import PrivateRoute from "./utils/PrivateRoute";
 import AddFormation from "./pages/AddFormation";
 import EditFormation from "./pages/EditFormation";
+import { FormationsContext } from "./context/FormationsContext";
+import { useAppState } from "./repository/FormationsRepository";
+import EditFooter from "./pages/EditFooter";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +61,10 @@ const router = createBrowserRouter([
             path: "editformation",
             element: <EditFormation />,
           },
+          {
+            path: "editfooter",
+            element: <EditFooter />,
+          },
         ],
       },
     ],
@@ -66,8 +73,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
-      <Footer />
+      <FormationsContext.Provider value={useAppState()}>
+        <RouterProvider router={router} />
+        <Footer />
+      </FormationsContext.Provider>
     </>
   );
 }

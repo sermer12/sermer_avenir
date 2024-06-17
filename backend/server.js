@@ -19,14 +19,19 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+
+
 app.use("/uploads/posts/pdf/", express.static("uploads/posts/pdf/"));
 
 //middlewer pour traiter la  request
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //route
+
 app.use("/post", require("./routes/post.routes"));
 app.use("/upload_post", require("./routes/upload.formation.routes"));
 app.use("/dashboard", require("./routes/login.admin.routes"));
+app.use("/footer", require("./routes/footer.routes"));
+
 //lancer server
 app.listen(port, () => console.log("le server demarre au port" + " " + port));
