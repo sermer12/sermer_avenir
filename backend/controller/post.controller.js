@@ -46,7 +46,7 @@ module.exports.setPost = [
         heure: req.body.heure,
         google_link: req.body.link,
       });
-
+      console.log(req.body, post);
       res.status(200).json(post);
     } catch (error) {
       console.error(error);
