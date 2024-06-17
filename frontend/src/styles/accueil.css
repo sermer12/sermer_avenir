@@ -7,3 +7,39 @@
     padding: 0 30px;
 
 }
+
+.homePage h1 {
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+.homePage p {
+    font-size: 1em;
+    margin: 20px 0;
+}
+
+.homePage img {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.homePage button:hover {
+    background-color: #f39c12;
+}
+
+.homePage_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.homePage_content_left {
+    width: 50%;
+    margin-right: 5%;
+}
+
+.homePage_content_right {
+    width: 50%;
+}
