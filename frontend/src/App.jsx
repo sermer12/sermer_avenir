@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Routes from "./components/Routes";
 import Formations from "./pages/Formations";
 import Contact from "./pages/Contact";
-import Actualiter from "./pages/Actualiter";
+import Actualites from "./pages/Actualites";
 import QuiSommesNous from "./pages/QuiSommesNous";
 import HomePages from "./pages/HomePages";
 import Footer from "./components/Footer";
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "Nos-actualites",
-        element: <Actualiter />,
+        element: <Actualites />,
       },
 
       {
