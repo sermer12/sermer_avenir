@@ -7,7 +7,7 @@ const Footer = () => {
   const [appState, setAppState] = useContext(FormationsContext);
   useEffect(() => {
     handleGetFooter();
-  }, [appState.footerEdit]);
+  }, []);
 
   const handleGetFooter = () => {
     getFooter().then((resp) => {

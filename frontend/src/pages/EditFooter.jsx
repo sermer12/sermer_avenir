@@ -61,8 +61,9 @@ const EditFooter = () => {
       let newFoooter = appState.footerEdit.map((p) =>
         p._id == updateFooter._id ? updateFooter : p
       );
-      setUpDate(false);
       setAppState({ ...appState, footerEdit: newFoooter });
+      window.location = "/dashboard/editfooter";
+      setUpDate(false);
       alert(" Le footer a été mis a jour avec succes ");
     });
   };
@@ -90,7 +91,6 @@ const EditFooter = () => {
         setContact_role("");
         setPhone("");
         setMail("");
-        window.location.reload();
       })
       .catch((error) => {
         // Gérer les erreurs
