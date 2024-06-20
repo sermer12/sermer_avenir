@@ -12,7 +12,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import AddFormation from "./pages/AddFormation";
 import EditFormation from "./pages/EditFormation";
 import { FormationsContext } from "./context/FormationsContext";
-import { useAppState } from "./repository/FormationsRepository";
+import { useAppState } from "./repository/AppRepository.js";
 import EditFooter from "./pages/EditFooter";
 
 const router = createBrowserRouter([

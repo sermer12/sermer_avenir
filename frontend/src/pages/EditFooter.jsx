@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FormationsContext } from "../context/FormationsContext";
-import { getFooter, updateFooter } from "../repository/FormationsRepository";
+import {
+  getFooter,
+  saveFoooter,
+  updateFooter,
+} from "../repository/AppRepository.js";
 
 const EditFooter = () => {
   const [adresse, setAdresse] = useState("");
@@ -12,7 +16,6 @@ const EditFooter = () => {
   const [upDate, setUpDate] = useState(false);
   const [id, setId] = useState(null);
   const [appState, setAppState] = useContext(FormationsContext);
-
   useEffect(() => {
     handleGetFooter();
   }, []);
@@ -54,19 +57,127 @@ const EditFooter = () => {
       mail,
     };
     updateFooter(data).then((resp) => {
-      let updateFormations = resp.data;
-      let newFormations = appState.footerEdit.map((p) =>
-        p._id == updateFormations._id ? updateFormations : p
+      let updateFooter = resp.data;
+      let newFoooter = appState.footerEdit.map((p) =>
+        p._id == updateFooter._id ? updateFooter : p
       );
       setUpDate(false);
-      setAppState({ ...appState, footerEdit: newFormations });
+      setAppState({ ...appState, footerEdit: newFoooter });
       alert(" Le footer a été mis a jour avec succes ");
     });
   };
 
+  const handlePostFooter = (event) => {
+    event.preventDefault();
+    const data = {
+      adresse,
+      postal_ville,
+      name_contact,
+      contact_role,
+      phone,
+      mail,
+    };
+    saveFoooter(data)
+      .then((response) => {
+        setAppState({
+          ...appState,
+          footerEdit: [...appState.footerEdit, response.data],
+        });
+        alert("Footer ajouté avec succes", data);
+        setAdresse("");
+        setPostal_ville("");
+        setName_contact("");
+        setContact_role("");
+        setPhone("");
+        setMail("");
+        window.location.reload();
+      })
+      .catch((error) => {
+        // Gérer les erreurs
+        console.error(error);
+      });
+  };
+
   return (
     <div className="formations-container-wrapper">
-      {upDate ? (
+      {appState.footerEdit.length === 0 && (
+        <h3 className="footer-title">
+          Enregistrez les élements du footer pour la première fois
+        </h3>
+      )}
+      {appState.footerEdit.length == 0 ? (
+        <div className="creation-formation">
+          <form
+            className="formation-form"
+            onSubmit={handlePostFooter}
+            method="post"
+            encType="multipart/form-data"
+          >
+            <label htmlFor="date" className="date">
+              Adresse
+            </label>
+            <input
+              type="text"
+              name="adresse"
+              id="adresse"
+              value={adresse}
+              onChange={(e) => setAdresse(e.target.value)}
+              required
+            />
+            <label htmlFor="date" className="date">
+              code postal & Ville
+            </label>
+            <input
+              type="text"
+              name="ville"
+              id="ville"
+              value={postal_ville}
+              onChange={(e) => setPostal_ville(e.target.value)}
+              required
+            />
+            <label htmlFor="place">Nom du contact</label>
+            <input
+              type="text"
+              name="contact"
+              id="contact"
+              value={name_contact}
+              onChange={(e) => setName_contact(e.target.value)}
+              required
+            />
+            <label htmlFor="link">Role du contact</label>
+            <input
+              type="text"
+              name="role"
+              id="role"
+              value={contact_role}
+              placeholder="lrole du contact"
+              onChange={(e) => setContact_role(e.target.value)}
+              required
+            />
+            <label htmlFor="link">Numéro</label>
+            <input
+              type="text"
+              name="numero"
+              id="numero"
+              value={phone}
+              placeholder="lrole du contact"
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
+            <label htmlFor="description">Mail</label>
+            <input
+              type="text"
+              name="mail"
+              id="mail"
+              value={mail}
+              placeholder="mail"
+              onChange={(e) => setMail(e.target.value)}
+              required
+            />
+            <input type="submit" value="modifier" />
+          </form>
+        </div>
+      ) : upDate ? (
         <div className="creation-formation">
           <form
             className="formation-form"
@@ -154,8 +265,8 @@ const EditFooter = () => {
               </tr>
             </thead>
             <tbody>
-              {appState.footerEdit.map((footer, index) => (
-                <tr key={index}>
+              {appState.footerEdit.map((footer, key) => (
+                <tr key={key}>
                   <td>{footer.adresse}</td>
                   <td>{footer.postal_ville}</td>
                   <td>{footer.name_contact}</td>

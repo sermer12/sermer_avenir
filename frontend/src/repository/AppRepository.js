@@ -16,6 +16,9 @@ export const updateFooter = (footer) => {
 export const saveFormations = (formation) => {
   return api.post("/post", formation);
 };
+export const saveFoooter = (footer) => {
+  return api.post("/footer", footer);
+};
 export const updateFormation = (formation) => {
   return api.put(`/post/${formation.id}`, formation);
 };

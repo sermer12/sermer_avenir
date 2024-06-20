@@ -48,3 +48,6 @@
 .footer_container_content a:hover {
   text-decoration: underline;
 }
+.footer-title {
+  text-align: center !important;
+}

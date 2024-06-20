@@ -4,7 +4,7 @@ import {
   deleteFormation,
   getFormations,
   updateFormation,
-} from "../repository/FormationsRepository";
+} from "../repository/AppRepository.js";
 
 const EditFormation = () => {
   const [date_d, setDate_d] = useState(new Date().toISOString().slice(0, 10));
@@ -36,21 +36,9 @@ const EditFormation = () => {
       (formation) => formation._id === formationId
     );
 
-    // Convertir la date en objet Date
-    const dateObject_debut = new Date(formationToEdit.date_debut);
-
-    // Convertir la date en format ISO
-    const isoDate_debut = dateObject_debut.toISOString().split("T")[0];
-
-    //
-    const dateObject_fin = new Date(formationToEdit.date_fin);
-
-    // Convertir la date en format ISO
-    const isoDate_fin = dateObject_fin.toISOString().split("T")[0];
-
     // Mettre à jour les états avec les détails de la formation à éditer
-    setDate_d(isoDate_debut);
-    setDate_f(isoDate_fin);
+    setDate_d(formationToEdit.date_debut.slice(0, 10));
+    setDate_f(formationToEdit.date_fin.slice(0, 10));
     setPlace(formationToEdit.place);
     setName(formationToEdit.name);
     setDescription(formationToEdit.description);
@@ -62,7 +50,15 @@ const EditFormation = () => {
 
   const handleUpdateFormation = (event) => {
     event.preventDefault();
-    const data = { id, date_d, date_f, place, name, link, description };
+    const data = {
+      id,
+      date_debut: date_d,
+      date_fin: date_f,
+      place,
+      name,
+      link,
+      description,
+    };
     updateFormation(data).then((resp) => {
       let updateFormations = resp.data;
       let newFormations = appState.formations.map((p) =>
