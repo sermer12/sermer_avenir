@@ -39,7 +39,8 @@ export const editArticle = (article) => {
 };
 
 export const deleteArticle = (article) => {
-  return api.delete(`/article/${article._id}`);
+  console.log(article);
+  return api.delete(`/article/${article}`);
 };
 
 export const useAppState = () => {

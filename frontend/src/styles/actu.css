@@ -57,6 +57,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-right: 10px;
 }
 
 .edit-form button:hover {
@@ -77,4 +78,18 @@
 
 .add-article-btn:hover {
     background-color: #218838;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c82333;
 }

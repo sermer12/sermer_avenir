@@ -15,6 +15,7 @@ const Actualites = () => {
 
     // Fetch articles from API
     getArticles().then((response) => {
+      console.log(response.data);
       setArticles(response.data);
     });
   }, []);
@@ -42,14 +43,38 @@ const Actualites = () => {
   };
 
   const handleSaveEdit = () => {
+    // Ensure the article ID is defined
+    const articleId = articles[editingIndex]._id;
+    if (!articleId) {
+      console.error("Article ID is undefined");
+      return;
+    }
+
     // Update article in API and update state
-    editArticle({ ...articles[editingIndex], ...editedArticle }).then((updatedArticle) => {
-      setArticles(
-        articles.map((article, index) =>
-          index === editingIndex ? updatedArticle.data : article
-        )
-      );
+    editArticle(articleId, editedArticle).then((response) => {
+      const updatedArticle = response.data;
+      const updatedArticles = [...articles];
+      updatedArticles[editingIndex] = updatedArticle;
+      setArticles(updatedArticles);
       setEditingIndex(null);
+    }).catch(error => {
+      console.error("Failed to update article", error);
+    });
+  };
+
+  const handleDeleteArticle = (index) => {
+    const articleId = articles[index]._id;
+    if (!articleId) {
+      console.error("Article ID is undefined");
+      return;
+    }
+
+    // Delete article from API and update state
+    deleteArticle(articleId).then(() => {
+      const updatedArticles = articles.filter((_, i) => i !== index);
+      setArticles(updatedArticles);
+    }).catch(error => {
+      console.error("Failed to delete article", error);
     });
   };
 
@@ -88,7 +113,10 @@ const Actualites = () => {
                   </div>
                 ) : (
                   isUserLoggedIn && (
-                    <button onClick={() => handleEditArticle(index)}>Modifier</button>
+                    <>
+                      <button onClick={() => handleEditArticle(index)}>Modifier</button>
+                      <button onClick={() => handleDeleteArticle(index)}>Supprimer</button>
+                    </>
                   )
                 )}
               </div>

@@ -56,3 +56,20 @@ module.exports.editArticle = async (req, res) => {
     }
 }
 
+module.exports.deleteArticle = async (req, res) => {
+    try {
+        const article = await ArticlesModel.findById(req.params.id);
+        if (!article) {
+            return res.status(404).json({ message: 'Article non trouvé' });
+        }
+        await ArticlesModel.findByIdAndDelete(req.params.id);
+        res.status(200).json({ message: 'Article supprimé' });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: "Une erreur s'est produite lors de la suppression de l'article.",
+        });
+    }
+}
+
+

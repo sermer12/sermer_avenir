@@ -26,14 +26,12 @@ const Footer = () => {
               appState.footerEdit.map((footer, key) => (
                 <>
                   <div className="footer_container_content_left" key={key}>
-                    <p>
-                      <h3>Adresse</h3>
-                      {footer.adresse} <br />
-                      {footer.postal_ville}
-                    </p>
+                    <p className="footer_title">Adresse</p>
+                    {footer.adresse} <br />
+                    {footer.postal_ville}
                   </div>
                   <div className="footer_container_content_center">
-                    <h3>Contact</h3>
+                    <p className="footer_title">Contact</p>
                     <p>
                       {footer.name_contact} <br />
                       {footer.contact_role} <br />
@@ -42,7 +40,7 @@ const Footer = () => {
                     </p>
                   </div>
                   <div className="footer_container_content_center">
-                    <h3>Membre du réseau des écoles ETRE</h3>
+                    <p className="footer_title">Partenaires</p>
                     <img
                       src="src/assets/etre-removebg-preview1.png"
                       alt="ETRE"
