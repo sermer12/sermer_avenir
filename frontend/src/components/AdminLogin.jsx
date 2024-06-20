@@ -13,7 +13,7 @@ const AdminLogin = () => {
     e.preventDefault();
     axios({
       method: "post",
-      url: "http://localhost:5000/dashboard",
+      url: "http://localhost:5001/dashboard",
       withCredentials: true,
       data: {
         username,
@@ -21,9 +21,7 @@ const AdminLogin = () => {
       },
     })
       .then((res) => {
-        console.log(res);
         if (res.data.errors) {
-          console.log(res);
           setError("Erreur lors de la connexion. Veuillez réessayer.");
         } else {
           const token = res.data.token;
@@ -34,7 +32,6 @@ const AdminLogin = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         setError("Erreur lors de la connexion. Veuillez réessayer.");
       });
   };

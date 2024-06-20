@@ -29,12 +29,14 @@ export const deleteFormation = (formation) => {
 export const getArticles = () => {
   return api.get("/article");
 };
+
 export const setArticle = (article) => {
   return api.post("/article", article);
 }
+
 export const editArticle = (article) => {
-  return api.put(`/article/${article.id}`, article);
-}
+  return api.put(`/article/${article._id}`, article);
+};
 
 export const deleteArticle = (article) => {
   return api.delete(`/article/${article._id}`);

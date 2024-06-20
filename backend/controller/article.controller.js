@@ -19,14 +19,12 @@ module.exports.getArticles = async (req, res) => {
 
 module.exports.setArticle = async (req, res) => {
     try {
-        console.log(req.body); // Enregistrer le corps de la requête
         const article = await ArticlesModel.create({
             title: req.body.title,
             content: req.body.content,
             image: req.body.image,
             date: req.body.date,
         });
-        console.log(req.body); // Enregistrer le corps de la requête
 
         res.status(200).json(article);
     } catch (error) {
@@ -40,20 +38,21 @@ module.exports.setArticle = async (req, res) => {
 
 module.exports.editArticle = async (req, res) => {
     try {
-        const article = await ArticlesModel.findByIdAndUpdate(req
-            .params.id, req.body, { new: true });
+        const article = await ArticlesModel.findById(req.params.id);
         if (!article) {
             return res.status(404).json({ message: 'Article non trouvé' });
         }
-        return res.status(200).json(article);
-    }
-
-    catch (error) {
+        const updatedArticle = await ArticlesModel.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        res.status(200).json(updatedArticle);
+    } catch (error) {
         console.error(error);
         return res.status(500).json({
-            message: "Une erreur s'est produite lors de la modification de l'article.",
+            message: "Une erreur s'est produite lors de la mise à jour de l'article.",
         });
     }
-
 }
 

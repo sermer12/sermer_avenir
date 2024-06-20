@@ -1,41 +1,24 @@
-/* styles/actu.css */
-
 .actu-container {
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
-    font-family: Arial, sans-serif;
-}
-
-.actu-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
 }
 
 .actu-content {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    margin-top: 20px;
 }
 
 .actu-card {
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: 15px;
-    background-color: #f9f9f9;
+    margin-bottom: 20px;
     transition: box-shadow 0.3s ease;
 }
 
-.actu-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .actu-card h2 {
-    margin: 0;
-    font-size: 18px;
-    color: #007bff;
     cursor: pointer;
+    color: #007bff;
     transition: color 0.3s ease;
 }
 
@@ -45,30 +28,53 @@
 
 .actu-card-content {
     margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
 }
 
-.actu-card-content p {
-    margin: 5px 0;
-    color: #555;
+.edit-form {
+    margin-top: 15px;
 }
 
-.actu-card-content a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.edit-form input[type="text"],
+.edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.edit-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-form button:hover {
+    background-color: #0056b3;
 }
 
 .add-article-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+}
+
+.add-article-btn:hover {
+    background-color: #218838;
 }

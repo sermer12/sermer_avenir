@@ -21,7 +21,6 @@ module.exports.getFooters = async (req, res) => {
 
 module.exports.setfooter = async (req, res) => {
   try {
-    console.log(req.body); // Enregistrer le corps de la requête
     const post = await FootersModel.create({
       adresse: req.body.adresse,
       postal_ville: req.body.postal_ville,
@@ -30,7 +29,7 @@ module.exports.setfooter = async (req, res) => {
       phone: req.body.phone,
       mail: req.body.mail,
     });
-  
+
     res.status(200).json(post);
   } catch (error) {
     console.error(error);
