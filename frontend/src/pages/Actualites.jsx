@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "../styles/actu.css";
+import { getArticles, setArticle, editArticle, deleteArticle } from "../repository/FormationsRepository";
 
 const Actualites = () => {
   const [openArticleIndex, setOpenArticleIndex] = useState(null);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     const token = window.localStorage.getItem("tokenAdmin");
     setIsUserLoggedIn(!!token); // Set isUserLoggedIn to true if token exists
+
+    // Fetch articles from API
+    getArticles().then((articles) => {
+      setArticles(articles);
+    });
   }, []);
 
   const handleArticleClick = (index) => {
@@ -15,21 +22,17 @@ const Actualites = () => {
   };
 
   const handleAddArticle = () => {
-    alert("Rediriger vers le formulaire d'ajout d'article");
-  };
+    const newArticle = {
+      title: "Nouvel article",
+      content: "Contenu de l'article",
+      date: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
+    };
 
-  const articles = [
-    {
-      title: "Titre de l'actualité 1",
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi molestias, quos, quas, quod quidem voluptas tempora quibusdam voluptates dolorum quae eaque.",
-      date: "12/12/2021",
-    },
-    {
-      title: "Titre de l'actualité 2",
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi molestias, quos, quas, quod quidem voluptas tempora quibusdam voluptates dolorum quae eaque.",
-      date: "12/12/2021",
-    },
-  ];
+    // Add new article to API and update state
+    setArticle(newArticle).then((addedArticle) => {
+      setArticles([...articles, addedArticle]);
+    });
+  };
 
   return (
     <div className="actu-container">
@@ -52,7 +55,6 @@ const Actualites = () => {
           Ajouter un article
         </button>
       )}
-
     </div>
   );
 };

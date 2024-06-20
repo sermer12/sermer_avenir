@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-export const api = axios.create({ baseURL: "http://localhost:5000" });
+export const api = axios.create({ baseURL: "http://localhost:5001" });
 
 export const getFormations = () => {
   return api.get("/post");
@@ -23,11 +23,25 @@ export const updateFormation = (formation) => {
 export const deleteFormation = (formation) => {
   return api.delete(`/post/${formation._id}`);
 };
+export const getArticles = () => {
+  return api.get("/article");
+};
+export const setArticle = (article) => {
+  return api.post("/article", article);
+}
+export const editArticle = (article) => {
+  return api.put(`/article/${article.id}`, article);
+}
+
+export const deleteArticle = (article) => {
+  return api.delete(`/article/${article._id}`);
+};
 
 export const useAppState = () => {
   const initialStat = {
     formations: [],
     footerEdit: [],
+    articles: [],
   };
   const appState = useState(initialStat);
   return appState;
