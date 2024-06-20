@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 import "../styles/addFormation.css";
 import { FormationsContext } from "../context/FormationsContext";
-import { saveFormations } from "../repository/FormationsRepository";
+import { saveFormations } from "../repository/AppRepository.js";
 
 const AddFormation = () => {
   const [date_d, setDate_d] = useState(new Date().toISOString().slice(0, 10));

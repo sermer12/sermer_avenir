@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { FormationsContext } from "../context/FormationsContext";
-import { getFormations } from "../repository/FormationsRepository";
+import { getFormations } from "../repository/AppRepository.js";
 import "../styles/formations.css";
 
 const Formations = () => {
@@ -8,7 +8,7 @@ const Formations = () => {
 
   useEffect(() => {
     handleGetFormations();
-  }, []);
+  }, [appState.Formations]);
 
   const handleGetFormations = () => {
     getFormations().then((resp) => {

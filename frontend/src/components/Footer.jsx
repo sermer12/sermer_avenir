@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import "../styles/footer.css";
 import { FormationsContext } from "../context/FormationsContext";
-import { getFooter } from "../repository/FormationsRepository";
+import { getFooter } from "../repository/AppRepository.js";
 
 const Footer = () => {
   const [appState, setAppState] = useContext(FormationsContext);
   useEffect(() => {
     handleGetFooter();
-  }, []);
+  }, [appState.footerEdit]);
 
   const handleGetFooter = () => {
     getFooter().then((resp) => {
@@ -28,39 +28,17 @@ const Footer = () => {
                   <div className="footer_container_content_left" key={key}>
                     <p>
                       <h3>Adresse</h3>
-                      {footer.adresse
-                        ? footer.adresse
-                        : "32 Boulevard de la Muette"}{" "}
-                      <br />
-                      {footer.postal_ville
-                        ? footer.postal_ville
-                        : "95140 Garges-lès-Gonesse"}
+                      {footer.adresse} <br />
+                      {footer.postal_ville}
                     </p>
                   </div>
                   <div className="footer_container_content_center">
                     <h3>Contact</h3>
                     <p>
-                      {footer.name_contact
-                        ? footer.name_contact
-                        : "Raphaël Lurois"}{" "}
-                      <br />
-                      {footer.contact_role
-                        ? footer.contact_role
-                        : "Directeur"}{" "}
-                      <br />
-                      {footer.phone ? footer.phone : "01 23 45 67 89"} <br />
-                      <a
-                        href={`mailto:${
-                          footer.mail
-                            ? footer.mail
-                            : "raphael.lurois@etre-valdoise.fr"
-                        }`}
-                      >
-                        Mail :{" "}
-                        {footer.mail
-                          ? footer.mail
-                          : "raphael.lurois@etre-valdoise.fr"}
-                      </a>
+                      {footer.name_contact} <br />
+                      {footer.contact_role} <br />
+                      {footer.phone} <br />
+                      <a href={`mailto:${footer.mail}`}>Mail : {footer.mail}</a>
                     </p>
                   </div>
                   <div className="footer_container_content_center">

@@ -30,8 +30,7 @@ module.exports.setfooter = async (req, res) => {
       phone: req.body.phone,
       mail: req.body.mail,
     });
-    console.log(req.body); // Enregistrer le corps de la requête
-
+  
     res.status(200).json(post);
   } catch (error) {
     console.error(error);
