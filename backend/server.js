@@ -2,7 +2,7 @@ const express = require("express");
 const connectDb = require("./config/db");
 require("dotenv").config();
 const cors = require("cors");
-const port = 5000;
+const port = 5001;
 
 //connexion a la db
 connectDb();
@@ -32,6 +32,7 @@ app.use("/post", require("./routes/post.routes"));
 app.use("/upload_post", require("./routes/upload.formation.routes"));
 app.use("/dashboard", require("./routes/login.admin.routes"));
 app.use("/footer", require("./routes/footer.routes"));
+app.use("/article", require("./routes/article.routes"));
 
 //lancer server
 app.listen(port, () => console.log("le server demarre au port" + " " + port));
