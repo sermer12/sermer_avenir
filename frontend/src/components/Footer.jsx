@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import "../styles/footer.css";
 import { FormationsContext } from "../context/FormationsContext";
 import { getFooter } from "../repository/AppRepository.js";
@@ -24,7 +24,7 @@ const Footer = () => {
           <div className="footer_container_content">
             {appState.footerEdit &&
               appState.footerEdit.map((footer, key) => (
-                <>
+                <Fragment key={key}>
                   <div className="footer_container_content_left" key={key}>
                     <p className="footer_title">Adresse</p>
                     {footer.adresse} <br />
@@ -48,7 +48,7 @@ const Footer = () => {
                       height="100"
                     />
                   </div>
-                </>
+                </Fragment>
               ))}
           </div>
         </div>

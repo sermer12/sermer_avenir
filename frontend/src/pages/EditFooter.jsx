@@ -85,6 +85,7 @@ const EditFooter = () => {
           footerEdit: [...appState.footerEdit, response.data],
         });
         alert("Footer ajouté avec succes", data);
+        window.location = "/dashboard/editfooter";
         setAdresse("");
         setPostal_ville("");
         setName_contact("");

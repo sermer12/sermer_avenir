@@ -29,7 +29,7 @@ const Formations = () => {
   };
   const showPdf = (pdf) => {
     window.open(
-      `http://localhost:5000/uploads/posts/pdf/${pdf}`,
+      `http://localhost:5001/uploads/posts/pdf/${pdf}`,
       "_blank",
       "noreferrer"
     );
@@ -38,7 +38,7 @@ const Formations = () => {
   return (
     <div className="formations-container-wrapper">
       <div className="formations-container">
-        <h1> Listes des Formations</h1>
+        <h1>Nos Formations</h1>
         {appState.formations.length === 0 ? (
           <h2 className="no-formation-content">
             Aucune formation à afficher pour le moment, veuillez revenir plus
