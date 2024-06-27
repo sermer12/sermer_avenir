@@ -30,12 +30,15 @@ const Actualites = () => {
       date: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
     };
 
-    // Add new article to API and update state
     setArticle(newArticle).then((addedArticle) => {
-      setArticles([...articles, addedArticle.data]);
+      const newArticles = [...articles, addedArticle.data];
+      setArticles(newArticles);
+      const newIndex = newArticles.length - 1; // L'index du nouvel article est la longueur du tableau - 1
+      setEditingIndex(newIndex); // Préparez l'édition pour le nouvel article
+      setEditedArticle({ title: newArticles[newIndex].title, content: newArticles[newIndex].content }); // Pré-remplissez les champs d'édition
+      setOpenArticleIndex(newIndex); // Ouvrez la carte de l'article pour l'édition
     });
   };
-
   const handleEditArticle = (index) => {
     setEditingIndex(index);
     setEditedArticle({ title: articles[index].title, content: articles[index].content });
