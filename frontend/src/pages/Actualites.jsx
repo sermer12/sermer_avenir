@@ -15,7 +15,6 @@ const Actualites = () => {
 
     // Fetch articles from API
     getArticles().then((response) => {
-      console.log(response.data);
       setArticles(response.data);
     });
   }, []);
@@ -49,16 +48,18 @@ const Actualites = () => {
       console.error("Article ID is undefined");
       return;
     }
-
-    // Update article in API and update state
     editArticle(articleId, editedArticle).then((response) => {
-      const updatedArticle = response.data;
-      const updatedArticles = [...articles];
-      updatedArticles[editingIndex] = updatedArticle;
+      const updatedArticles = articles.map((article, index) => {
+        if (index === editingIndex) {
+          return response.data;
+        }
+        return article;
+      });
       setArticles(updatedArticles);
       setEditingIndex(null);
-    }).catch(error => {
-      console.error("Failed to update article", error);
+    }
+    ).catch(error => {
+      console.error("Failed to edit article", error);
     });
   };
 
@@ -83,6 +84,11 @@ const Actualites = () => {
     setEditedArticle({ ...editedArticle, [name]: value });
   };
 
+  const FormatDate = (date) => {
+    const dateObj = new Date(date);
+    return dateObj.toLocaleDateString("fr-FR");
+  }
+
   return (
     <div className="actu-container">
       <h1>Actualités</h1>
@@ -93,7 +99,7 @@ const Actualites = () => {
             {openArticleIndex === index && (
               <div className="actu-card-content">
                 <p>{article.content}</p>
-                <p>Publié le {article.date}</p>
+                <p>Publié le {FormatDate(article.date)}</p>
                 {isUserLoggedIn && editingIndex === index ? (
                   <div className="edit-form">
                     <input

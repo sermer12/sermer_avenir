@@ -34,12 +34,11 @@ export const setArticle = (article) => {
   return api.post("/article", article);
 }
 
-export const editArticle = (article) => {
-  return api.put(`/article/${article._id}`, article);
+export const editArticle = (article, articleContent) => {
+  return api.put(`/article/${article}`, articleContent);
 };
 
 export const deleteArticle = (article) => {
-  console.log(article);
   return api.delete(`/article/${article}`);
 };
 

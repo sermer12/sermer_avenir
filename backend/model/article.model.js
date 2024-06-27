@@ -20,10 +20,10 @@ const articleSchema = mongoose.Schema(
         image: {
             type: String,
         },
-        // date: {
-        //     type: Date,
-        //     required: true,
-        // },
+        date: {
+            type: Date,
+            required: true,
+        },
     },
     {
         timestamps: true,
