@@ -24,6 +24,7 @@ const articleSchema = mongoose.Schema(
             type: Date,
             required: true,
         },
+
     },
     {
         timestamps: true,

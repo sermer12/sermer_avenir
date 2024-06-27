@@ -8,6 +8,7 @@ const port = 5001;
 connectDb();
 
 const app = express();
+const path = require('path');
 
 //Authorisation CORS
 
@@ -20,7 +21,7 @@ app.use(
   })
 );
 
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/uploads/posts/pdf/", express.static("uploads/posts/pdf/"));
 
 //middlewer pour traiter la  request
