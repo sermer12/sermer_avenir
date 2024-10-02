@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 export const api = axios.create({ baseURL: "http://localhost:5001" });
-
+//post
 export const getFormations = () => {
   return api.get("/post");
 };
